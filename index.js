@@ -1,8 +1,5 @@
-const server = require('express')();
+const server = require('./api/server');
 
-server.get('/', (req, res) => {
-    res.status(200).json("it's working")
-})
 
 const port = 4000;
 server.listen(port, () => console.log(`\nAPI running on port: ${port}\n`));
