@@ -1,8 +1,8 @@
 const router = require('express').Router();
+const itemsDb = require('../model/items');
 
 router.get('/', (req, res) => {
-    console.log('hi')
-    res.status(200).json("items endpoint is working");
+    res.status(200).send(itemsDb.getMany());
 });
 
 module.exports = router;
