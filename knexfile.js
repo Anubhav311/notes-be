@@ -5,9 +5,10 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host: '192.168.99.100',
+      host: 'localhost',
       port: '5432',
-      user: 'postgres'
+      user: 'postgres',
+      database: 'notes_db'
     },
     pool: {
       min: 2,
