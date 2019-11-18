@@ -1,7 +1,9 @@
+const db = require('../data/dbConfig');
+
 module.exports = {
     getMany
 }
 
 function getMany(filter = {}) {
-    return "working man!!!"
+    return db('items').where(filter)
 }
