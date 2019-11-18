@@ -5,13 +5,14 @@ exports.up = function(knex) {
         tbl.datetime('created_at').defaultTo(knex.fn.now());
         tbl.string('items').notNullable();
         tbl.string('link');
-        tbl.integer('comments').defaultTo(0).notNullable();
+        tbl.integer('comments').defaultTo(0);
     })
     .createTable('comments', tbl => {
         tbl.increments();
         tbl.datetime('created_at').defaultTo(knex.fn.now());
         tbl.string('comment').notNullable();
-        tbl.integer('sub_comment').defaultTo(null).references('id').inTable('comments').onDelete('CASCADE').onUpdate('CASCADE');
+        tbl.integer('parent_item');
+        tbl.integer('sub_comment');
     })
 };
 
