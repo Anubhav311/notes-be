@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const commentsDb = require('../model/items');
+const commentsDb = require('../model/comments');
 
 router.get('/', (req, res) => {
     commentsDb.getMany()
