@@ -5,9 +5,9 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('items').insert([
-        {items: "these are some seed items", link: "https:some random link"},
-        {items: "these are some seed items", link: "https:some random link"},
-        {items: "these are some seed items", link: "https:some random link"}
+        {items: "these are some seed items", link: "https:some random link", comments: 3},
+        {items: "these are some seed items", link: "https:some random link", comments: 3},
+        {items: "these are some seed items", link: "https:some random link", comments: 4}
       ]);
     });
 };
