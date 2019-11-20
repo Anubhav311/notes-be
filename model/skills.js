@@ -2,7 +2,6 @@ const db = require('../data/dbConfig');
 
 module.exports = {
     insert,
-    getOne,
     getMany
 }
 
@@ -17,10 +16,6 @@ function insert(user) {
         })
 }
 
-function getOne(filter = {}) {
-    return db('skills').where(filter).first();
-}
-
-function getMany(filter = {}) {
+function getMany(filter = {user_id: 1}) {
     return db('skills').where(filter)
 }
