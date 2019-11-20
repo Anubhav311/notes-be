@@ -16,6 +16,6 @@ function insert(user) {
         })
 }
 
-function getMany(filter = {user_id: 1}) {
+function getMany(filter = {}) {
     return db('skills').where(filter)
 }
