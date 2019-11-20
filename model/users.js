@@ -5,5 +5,5 @@ module.exports = {
 }
 
 function getMany(filter = {}) {
-    return db('items').where(filter)
+    return db('users').where(filter)
 }

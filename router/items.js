@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const itemsDb = require('../model/items');
+const usersDb = require('../model/users');
 
 router.get('/', (req, res) => {
-    itemsDb.getMany()
-        .then(items => {
-            res.status(200).json(items);
+    usersDb.getMany()
+        .then(users => {
+            res.status(200).json(users);
         })
         .catch(err => res.send(err));
 });

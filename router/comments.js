@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const commentsDb = require('../model/comments');
+const skillsDb = require('../model/skills');
 
 router.get('/', (req, res) => {
-    commentsDb.getMany()
-        .then(comments => {
-            res.status(200).json(comments);
+    skillsDb.getMany()
+        .then(skills => {
+            res.status(200).json(skills);
         })
         .catch(err => res.send(err));
 });

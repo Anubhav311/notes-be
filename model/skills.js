@@ -5,5 +5,5 @@ module.exports = {
 }
 
 function getMany(filter = {}) {
-    return db('comments').where(filter)
+    return db('skills').where(filter)
 }
