@@ -17,10 +17,10 @@ function insert(user) {
         })
 }
 
-function getMany(filter = {}) {
-    return db('users').where(filter)
+function getOne(filter = {}) {
+    return db('users').where(filter).first();
 }
 
-function getOne(filter = {}) {
-    return db('users').where(filter).first()
+function getMany(filter = {}) {
+    return db('users').where(filter)
 }
