@@ -10,6 +10,15 @@ router.get('/', (req, res) => {
         .catch(err => res.send(err));
 });
 
+router.post('/', (req, res) => {
+    payload = req.body
+    skillsDb.insert(payload)
+        .then(response => {
+            res.status(200).json(response);
+        })
+        .catch(err => res.send(err.message));
+})
+
 router.put('/', (req, res) => {
     skillsDb.update({id: req.body.id}, req.body.payload)
         .then(response => {
