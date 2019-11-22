@@ -25,4 +25,12 @@ router.put('/', (req, res) => {
         .catch(err => res.send(err));
 })
 
+router.delete('/', (req, res) => {
+    usersDb.remove(req.body)
+        .then(response => {
+            res.status(200).json(response);
+        })
+        .catch(err => res.send(err));
+})
+
 module.exports = router;

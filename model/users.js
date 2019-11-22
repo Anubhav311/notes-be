@@ -41,10 +41,10 @@ function update(filter = {}, payload) {
         })
 }
 
-function remove(filter = {}) {
-    if (!selector) return new Error('No selector provided for deletion');
+function remove(filter = null) {
+    if (!filter) return new Error('No selector provided for deletion');
     return db('users')
-        .where(selector)
+        .where(filter)
         .delete()
         .returning('id');
 }
