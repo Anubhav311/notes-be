@@ -2,7 +2,6 @@ const router = require('express').Router();
 const skillsDb = require('../model/skills');
 
 router.get('/', (req, res) => {
-    console.log(req.body)
     filter = req.body
     skillsDb.getMany(filter)
         .then(skills => {

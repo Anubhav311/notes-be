@@ -3,7 +3,8 @@ const db = require('../data/dbConfig');
 module.exports = {
     insert,
     getMany,
-    update
+    update,
+    remove
 }
 
 function insert(user) {
@@ -22,7 +23,6 @@ function getMany(filter = {}) {
 }
 
 function update(filter = {}, payload) {
-    console.log(filter, payload)
     return db('skills')
         .where(filter)
         .update(payload)
@@ -33,4 +33,12 @@ function update(filter = {}, payload) {
                 .where({id})
                 .first();
         })
+}
+
+function remove(filter = null) {
+    if (!filter) return new Error('No selector provided for deletion');
+    return db('skills')
+        .where(filter)
+        .delete()
+        .returning('id');
 }
