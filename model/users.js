@@ -3,7 +3,8 @@ const db = require('../data/dbConfig');
 module.exports = {
     insert,
     getOne,
-    getMany
+    getMany,
+    update
 }
 
 function insert(user) {
@@ -23,4 +24,17 @@ function getOne(filter = {}) {
 
 function getMany(filter = {}) {
     return db('users').where(filter)
+}
+
+function update(filter = {}, payload) {
+    return db('users')
+        .where(filter)
+        .update(payload)
+        .returning('id')
+        .then(idArr => {
+            const id = idArr[0]
+            return db('users')
+                .where({id})
+                .first();
+        })
 }
