@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
 });
 
 router.put('/', (req, res) => {
-    usersDb.update(req.body.id, req.body.payload)
+    
+    usersDb.update({id: req.body.id}, req.body.payload)
         .then(response => {
             res.status(200).json(response);
         })

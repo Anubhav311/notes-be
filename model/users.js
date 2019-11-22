@@ -27,6 +27,7 @@ function getMany(filter = {}) {
 }
 
 function update(filter = {}, payload) {
+    console.log(filter, payload)
     return db('users')
         .where(filter)
         .update(payload)
