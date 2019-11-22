@@ -2,7 +2,6 @@ const router = require('express').Router();
 const partsDb = require('../model/parts');
 
 router.get('/', (req, res) => {
-    console.log(req.body)
     filter = req.body
     partsDb.getMany(filter)
         .then(parts => {
@@ -10,5 +9,14 @@ router.get('/', (req, res) => {
         })
         .catch(err => res.send(err));
 });
+
+router.put('/', (req, res) => {
+    console.log(req.body)
+    partsDb.update({id: req.body.id}, req.body.payload)
+        .then(response => {
+            res.status(200).json(response);
+        })
+        .catch(err => console.log(err.message));
+})
 
 module.exports = router;
