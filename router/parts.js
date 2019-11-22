@@ -18,4 +18,13 @@ router.put('/', (req, res) => {
         .catch(err => res.send(err.message));
 })
 
+router.delete('/', (req, res) => {
+    partsDb.remove(req.body)
+        .then(response => {
+            res.status(200).json(response);
+        })
+        .catch(err => res.send(err));
+})
+
+
 module.exports = router;
