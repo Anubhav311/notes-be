@@ -8,28 +8,28 @@ module.exports = {
 }
 
 function insert(user) {
-    return db('skill_parts')
+    return db('parts')
         .insert(user)
         .returning('id')
         .then(idArr => {
             const id = idArr[0]
-            return db('skill_parts')
+            return db('parts')
                 .where({id}).first();
         })
 }
 
 function getMany(filter = {}) {
-    return db('skill_parts').where(filter)
+    return db('parts').where(filter)
 }
 
 function update(filter = {}, payload) {
-    return db('skill_parts')
+    return db('parts')
         .where(filter)
         .update(payload)
         .returning('id')
         .then(idArr => {
             const id = idArr[0]
-            return db('skill_parts')
+            return db('parts')
                 .where({id})
                 .first();
         })
@@ -37,7 +37,7 @@ function update(filter = {}, payload) {
 
 function remove(filter = null) {
     if (!filter) return new Error('No selector provided for deletion');
-    return db('skill_parts')
+    return db('parts')
         .where(filter)
         .delete()
         .returning('id');
