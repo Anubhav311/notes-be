@@ -34,7 +34,7 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
     })
-    .createTable('skill_parts', tbl => {
+    .createTable('parts', tbl => {
         tbl.increments();
 
         tbl.datetime('created_at')
@@ -43,8 +43,8 @@ exports.up = function(knex) {
         tbl.string('part_name')
             .notNullable();
 
-        tbl.boolean('completion_status')
-            .defaultTo(false)
+        tbl.integer('completion_status')
+            .defaultTo(1)
             .notNullable();
 
         tbl.boolean('social_status')
