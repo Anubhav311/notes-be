@@ -17,4 +17,12 @@ router.get('/', (req, res) => {
         .catch(err => res.send(err));
 });
 
+router.put('/', (req, res) => {
+    usersDb.update(req.body.id, req.body.payload)
+        .then(response => {
+            res.status(200).json(response);
+        })
+        .catch(err => res.send(err));
+})
+
 module.exports = router;
