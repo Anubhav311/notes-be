@@ -17,6 +17,15 @@ router.get('/', (req, res) => {
         .catch(err => res.send(err));
 });
 
+router.post('/', (req, res) => {
+    payload = req.body
+    usersDb.insert(payload)
+        .then(response => {
+            res.status(200).json(response);
+        })
+        .catch(err => res.send(err.message));
+})
+
 router.put('/', (req, res) => {
     usersDb.update({id: req.body.id}, req.body.payload)
         .then(response => {
