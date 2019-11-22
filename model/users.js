@@ -4,7 +4,8 @@ module.exports = {
     insert,
     getOne,
     getMany,
-    update
+    update,
+    remove
 }
 
 function insert(user) {
@@ -38,4 +39,12 @@ function update(filter = {}, payload) {
                 .where({id})
                 .first();
         })
+}
+
+function remove(filter = {}) {
+    if (!selector) return new Error('No selector provided for deletion');
+    return db('users')
+        .where(selector)
+        .delete()
+        .returning('id');
 }
