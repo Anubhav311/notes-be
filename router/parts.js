@@ -11,12 +11,11 @@ router.get('/', (req, res) => {
 });
 
 router.put('/', (req, res) => {
-    console.log(req.body)
     partsDb.update({id: req.body.id}, req.body.payload)
         .then(response => {
             res.status(200).json(response);
         })
-        .catch(err => console.log(err.message));
+        .catch(err => res.send(err.message));
 })
 
 module.exports = router;
