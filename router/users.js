@@ -3,11 +3,17 @@ const usersDb = require('../model/users');
 const bcrypt = require('bcryptjs');
 
 router.get('/login', (req, res) => {
-    usersDb.getOne()
+    let { email, password } = req.body;
+
+    usersDb.getOne({ email })
         .then(user => {
-            res.status(200).json(user);
+            if (user && bcrypt.compareSync(password, user.password)) {
+                res.status(200).json({message: `Welcome ${user.email}`});
+            } else {
+                res.status(401).json({ message: 'Invalid Credentials' });
+            }
         })
-        .catch(err => res.send(err));
+        .catch(err => res.send(err.message));
 })
 
 router.get('/', (req, res) => {
