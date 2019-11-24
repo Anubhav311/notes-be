@@ -28,6 +28,7 @@ router.put('/', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
+    console.log(req.body)
     partsDb.remove(req.body)
         .then(response => {
             res.status(200).json(response);

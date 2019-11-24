@@ -40,5 +40,5 @@ function remove(filter = null) {
     return db('parts')
         .where(filter)
         .delete()
-        .returning('id');
+        .then(res => getMany({}))
 }
