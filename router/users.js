@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const usersDb = require('../model/users');
+const bcrypt = require('bcryptjs');
 
 router.get('/login', (req, res) => {
     usersDb.getOne()
@@ -18,8 +19,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    payload = req.body
-    usersDb.insert(payload)
+    user = req.body
+
+    const hash = bcrypt.hashSync(user.password, 3)
+
+    user.password = hash
+
+    usersDb.insert(user)
         .then(response => {
             res.status(200).json(response);
         })
