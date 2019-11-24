@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
     "start": "node index.js",
-    "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback --all",
-    "seed": "knex seed:run"
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "resetdb": "knex migrate:rollback --all && knex migrate:latest && knex seed:run"
   },
   "keywords": [],
   "author": "Anubhav311",
