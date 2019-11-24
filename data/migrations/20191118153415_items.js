@@ -65,7 +65,7 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('skill_parts')
+    return knex.schema.dropTableIfExists('parts')
         .dropTableIfExists('skills')
         .dropTableIfExists('users')
 };
