@@ -2,7 +2,7 @@ const router = require('express').Router();
 const partsDb = require('../model/parts');
 const restricted = require('../auth/restricted-middleware');
 
-router.get('/', restricted, (req, res) => {
+router.get('/', (req, res) => {
     filter = req.body
     partsDb.getMany(filter)
         .then(parts => {
